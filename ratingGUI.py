@@ -128,6 +128,7 @@ def main():
                                  })
 
     app = QApplication([])
+    app.setStyle('Fusion')
     window = RatingGUI(rating_table)
     window.resize(600, 800)
     app.exec_()
