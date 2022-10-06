@@ -19,7 +19,7 @@ class RatingGUI(QMainWindow):
         self.file_counter = 0
         self.progressBar.setValue(0)
         self.current_file = self.file_list[self.file_counter]
-        with Image.open("data/" + self.current_file)as img:
+        with Image.open("generated/" + self.current_file)as img:
             self.proportion = img.size[1] / img.size[0]
         self.update_image()
         self.label.setMinimumSize(1, 1)
@@ -68,17 +68,17 @@ class RatingGUI(QMainWindow):
         return w, h
         
     def update_image(self):
-        pixmap = QtGui.QPixmap("data/" + self.current_file)
+        pixmap = QtGui.QPixmap("generated/" + self.current_file)
         w, h = self.get_dimensions()
         pixmap = pixmap.scaled(w, h)
         self.label.setPixmap(pixmap)
 
     def resizeEvent(self, event):
         try:
-            pixmap = QtGui.QPixmap("data/" + self.current_file)
+            pixmap = QtGui.QPixmap("generated/" + self.current_file)
             w, h = self.get_dimensions()
         except:
-            pixmap = QtGui.QPixmap("data/AF01HAS.JPG")
+            pixmap = QtGui.QPixmap("generated/0.JPG")
             w, h = self.width(), self.height()
         pixmap = pixmap.scaled(w, h)
         self.label.setPixmap(pixmap)
