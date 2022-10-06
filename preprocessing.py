@@ -15,26 +15,24 @@ m.columns = g.columns
 ratings = pd.merge(g, m, on="Image_ID")
 ratings = pd.merge(ratings, r, on="Image_ID")
 
-ratings.iloc[:,[1,2,3]] = ratings.iloc[:,[1,2,3]].apply(lambda x: (x - x.mean()) / x.std())
 ratings.iloc[:,[1,2,3]].hist()
 
-plt.savefig("rating_distr.png")
 ratings.to_csv("ratings.csv")
 
 # IMAGES
 
-for image in os.listdir("data"):
-    im = Image.open("data/" + image).convert('L')
-    width, height = im.size   # Get dimensions
+# for image in os.listdir("data"):
+#     im = Image.open("data/" + image).convert('L')
+#     width, height = im.size   # Get dimensions
 
-    new_width = 300
-    new_height = 300
+#     new_width = 300
+#     new_height = 300
 
-    left = (width - new_width)/2
-    top = (height - new_height)/2 + 90
-    right = (width + new_width)/2
-    bottom = (height + new_height)/2 + 90
+#     left = (width - new_width)/2
+#     top = (height - new_height)/2 + 90
+#     right = (width + new_width)/2
+#     bottom = (height + new_height)/2 + 90
 
-    im = im.crop((left, top, right, bottom))
-    im = im.resize((64,64))
-    im.save("preprocessed/" + image)
+#     im = im.crop((left, top, right, bottom))
+#     im = im.resize((64,64))
+#     im.save("preprocessed/" + image)
