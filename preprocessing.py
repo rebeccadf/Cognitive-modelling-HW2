@@ -15,7 +15,6 @@ m.columns = g.columns
 ratings = pd.merge(g, m, on="Image_ID")
 ratings = pd.merge(ratings, r, on="Image_ID")
 
-ratings.iloc[:,[1,2,3]] = ratings.iloc[:,[1,2,3]].apply(lambda x: (x - x.mean()) / x.std())
 ratings.iloc[:,[1,2,3]].hist()
 
 ratings.to_csv("ratings.csv")
