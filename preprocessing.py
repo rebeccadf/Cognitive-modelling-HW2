@@ -17,7 +17,6 @@ ratings = pd.merge(ratings, r, on="Image_ID")
 
 ratings.iloc[:,[1,2,3]].hist()
 
-plt.savefig("rating_distr.png")
 ratings.to_csv("ratings.csv")
 
 # # IMAGES
